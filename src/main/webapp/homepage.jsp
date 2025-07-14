@@ -9,21 +9,38 @@
             background: #f7f7f7;
             margin: 0;
             padding: 0;
+            display: flex;
+    		flex-direction: column;
+    		min-height: 100vh;
         }
 
         header {
-            background-color: #3498db;
             color: white;
             padding: 1rem 2rem;
             text-align: center;
+            height: 100px;            
+        }
+        
+        header::before {
+        	content: "";
+    		position: absolute;
+    		top: 0; left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: url("materials/HMPGbackground.jpg");
+    		background-size: cover;
+    		background-position: center;
+    		opacity: 0.8;
+    		z-index: -1;
         }
 
         main {
             padding: 2rem;
-            max-width: 1000px;
+            max-width: 1500px;
             margin: auto;
-            background: white;
+            background-color: rgba(255,255,255,0.9);
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            flex: 1;
         }
 
         h2 {
@@ -34,13 +51,14 @@
         .button-container {
             display: flex;
             justify-content: space-between;
-            gap: 2rem;
             flex-wrap: wrap;
         }
 
         .button-column {
             flex: 1;
             min-width: 300px;
+            padding-left: 60px;
+            padding-right: 60px;
         }
 
         .column-title {
@@ -72,6 +90,7 @@
             padding: 1rem;
             background: #eee;
             font-size: 0.9rem;
+            position: buttom;
             margin-top: 2rem;
         }
     </style>
