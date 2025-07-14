@@ -12,6 +12,9 @@ Our project is named “All-You-Want Recipe”. It is a dynamic, user-centered r
   - Java, SQL, HTML, JavaScript
 
 ## Progressing
-- Updated first version of `homepage`
+1. Optimized the `homepage`
 
-<img width="1440" alt="Screenshot 2025-07-03 at 10 23 39 AM" src="https://github.com/user-attachments/assets/17325ce8-3f55-484b-bb7f-93308e9e5fc9" />
+<img width="1440" height="778" alt="Screenshot 2025-07-14 at 12 28 05 AM" src="https://github.com/user-attachments/assets/7280075d-655d-4805-a45b-0d6f7d37333e" />
+
+2. Completed the basic layout and design of the user sign-up and log-in page
+<img width="1440" height="778" alt="Screenshot 2025-07-14 at 12 28 55 AM" src="https://github.com/user-attachments/assets/01ee7e36-a0ee-4067-9df6-d5ac5f445d3e" />
