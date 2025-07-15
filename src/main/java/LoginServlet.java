@@ -1,11 +1,11 @@
 import java.io.IOException;
 import java.io.*;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -26,15 +26,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		String username = request.getParameter("username");
-		String password = request.getParameter("pwd");
-		
-		out.print("Username: "+username);
-		out.print("Password: "+password);
 	}
 
 	/**
@@ -42,7 +34,47 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		
+		String db = "RecipeProject";
+		String user = "root";
+		String dbpassword = "Hjq2004121";
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+        try {
+        	
+        	// Connect to MySql database
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection con;
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RecipeProject?autoReconnect=true&useSSL=false",user, dbpassword);
+            
+			// Get user entered info
+			String username = request.getParameter("username");
+			String password = request.getParameter("pwd");
+			
+			// Check if user entered info match database
+			PreparedStatement ps = con.prepareStatement("SELECT userID FROM User WHERE username=? AND password=?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery(); // return some result
+			
+			// If rs.next() = true -> user entered info matches database
+			if (rs.next()) {
+				out.print("Welcome Back!!!");
+			}
+			else {
+				out.println("Sorry, we can't find your account information.");
+				out.println("Please check the information you entered");
+			}
+            
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
