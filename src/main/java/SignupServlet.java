@@ -34,7 +34,6 @@ public class SignupServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
 		
 		String db = "RecipeProject";
 		String user = "root";
@@ -55,16 +54,34 @@ public class SignupServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			
 			// Check if user entered info match database
-			PreparedStatement ps = con.prepareStatement("SELECT userID FROM User WHERE username=?");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM User WHERE username=?");
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery(); // return some result
 			
 			// If rs.next() = true -> user entered info matches database
 			if (rs.next()) {
-				out.print("Sorry, the username was taken. Please try again");
+				out.print("Sorry, the username was taken. Please try again.");
 			}
 			else {
+				String inserSQL = "Insert INTO User(username, password, email) Values(?,?,?)";
+				PreparedStatement insert = con.prepareStatement(inserSQL, Statement.RETURN_GENERATED_KEYS);
+				insert.setString(1, username);
+				insert.setString(2, password);
+				insert.setString(3, email);
 				
+				int rows = insert.executeUpdate();
+                if (rows == 1) {
+                    // fetch the auto-generated userID
+                    try (ResultSet keys = insert.getGeneratedKeys()) {
+                        if (keys.next()) {
+                            int newID = keys.getInt(1);
+                            out.printf("Welcome, %s! Your userID is %d.<br>", username, newID);
+                            out.println("<a href='homepage.jsp'>Go to home</a>");
+                        }
+                    }
+                } else {
+                    out.println("Unexpected error — please try again.");
+                }
 			}
             
 		} catch (ClassNotFoundException e) {
