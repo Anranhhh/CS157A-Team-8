@@ -17,4 +17,11 @@ Our project is named “Dishbase”. It is a dynamic, user-centered recipe websi
 <img width="1440" height="778" alt="Screenshot 2025-07-14 at 12 28 05 AM" src="https://github.com/user-attachments/assets/7280075d-655d-4805-a45b-0d6f7d37333e" />
 
 2. Completed the basic layout and design of the user sign-up and log-in page
-<img width="1440" height="778" alt="Screenshot 2025-07-14 at 12 28 55 AM" src="https://github.com/user-attachments/assets/01ee7e36-a0ee-4067-9df6-d5ac5f445d3e" />
+- Sign-up/Register Page
+<img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 23 30 PM" src="https://github.com/user-attachments/assets/4fcd8350-e713-4033-8672-34f70f85a42a" />
+
+- Log-in Page
+<img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 24 07 PM" src="https://github.com/user-attachments/assets/8747b66b-4e98-4ea1-a6e8-f87ad1def9e0" />
+
+3. Add Recipe Page
+<img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 25 16 PM" src="https://github.com/user-attachments/assets/273af895-4b7c-43d3-be4e-9728e8789261" />
