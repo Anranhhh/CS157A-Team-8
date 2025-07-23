@@ -92,14 +92,14 @@
             color: white;
         }
     </style>
+    <!-- Functions to add a row for the ingredients and the recipe steps -->
     <script>
         function addIngredientRow() {
             const table = document.getElementById("ingredientTable");
             const row = table.insertRow(-1);
             row.innerHTML = `
                 <td><input type="text" name="ingredientName" required></td>
-                <td><input type="text" name="ingredientQty"></td>
-            `;
+                <td><input type="text" name="ingredientQty"></td> `;
         }
 
         function addStepRow() {
@@ -142,12 +142,23 @@
         <input type="text" name="cookingTime" required />
 
         <label>Type of Cuisine:</label>
-        <select name="cuisine" required>
-            <option value="japanese">Japanese</option>
-            <option value="american">American</option>
-            <option value="mexican">Mexican</option>
-            <option value="italian">Italian</option>
-        </select>
+		<div>
+    		<input type="checkbox" name="cuisine[]" value="japanese" /> Japanese<br/>
+		    <input type="checkbox" name="cuisine[]" value="american" /> American<br/>
+		    <input type="checkbox" name="cuisine[]" value="mexican" /> Mexican<br/>
+		    <input type="checkbox" name="cuisine[]" value="italian" /> Italian<br/>
+		    <input type="checkbox" name="cuisine[]" value="chinese" /> Chinese<br/>
+		    <input type="checkbox" name="cuisine[]" value="indian" /> Indian<br/>
+		    <input type="checkbox" name="cuisine[]" value="french" /> French<br/>
+		    <input type="checkbox" name="cuisine[]" value="thai" /> Thai<br/>
+		    <input type="checkbox" name="cuisine[]" value="mediterranean" /> Mediterranean<br/>
+		    <input type="checkbox" name="cuisine[]" value="korean" /> Korean<br/>
+		    <input type="checkbox" name="cuisine[]" value="vietnamese" /> Vietnamese<br/>
+		    <input type="checkbox" name="cuisine[]" value="spanish" /> Spanish<br/>
+		    <input type="checkbox" name="cuisine[]" value="greek" /> Greek<br/>
+		    <input type="checkbox" name="cuisine[]" value="middle eastern" /> Middle Eastern<br/>
+		    <input type="checkbox" name="cuisine[]" value="caribbean" /> Caribbean<br/>
+		</div>
 
         <label>Difficulty:</label>
         <select name="difficulty" required>
@@ -158,12 +169,19 @@
 
         <label>Tags:</label>
         <div>
-            <input type="checkbox" name="tag" value="vegetarian" /> Vegetarian<br/>
-            <input type="checkbox" name="tag" value="vegan" /> Vegan<br/>
-            <input type="checkbox" name="tag" value="lactose free" /> Lactose Free<br/>
-            <input type="checkbox" name="tag" value="healthy" /> Healthy<br/>
-            <input type="checkbox" name="tag" value="allergies" /> Allergies<br/>
-            <input type="checkbox" name="tag" value="gluten-free" /> Gluten-Free<br/>
+            <input type="checkbox" name="tag[]" value="vegetarian" /> Vegetarian<br/>
+			<input type="checkbox" name="tag[]" value="vegan" /> Vegan<br/>
+			<input type="checkbox" name="tag[]" value="lactose-free" /> Lactose-Free<br/>
+			<input type="checkbox" name="tag[]" value="healthy" /> Healthy<br/>
+			<input type="checkbox" name="tag[]" value="nut-free" /> Nut Free<br/>
+			<input type="checkbox" name="tag[]" value="gluten-free" /> Gluten-Free<br/>
+			<input type="checkbox" name="tag[]" value="peanut-free" /> Vegan<br/>
+			<input type="checkbox" name="tag[]" value="egg-free" /> Egg Free<br/>
+			<input type="checkbox" name="tag[]" value="soy-free" /> Soy Free<br/>
+			<input type="checkbox" name="tag[]" value="low-carb" /> Low Carb<br/>
+			<input type="checkbox" name="tag[]" value="low-sodium" /> Low Sodium<br/>
+			<input type="checkbox" name="tag[]" value="sugar-free" /> Sugar-Free<br/>
+			<input type="checkbox" name="tag[]" value="keto" /> Keto<br/>
         </div>
 
         <div class="button-row">
