@@ -61,11 +61,12 @@ public class LoginServlet extends HttpServlet {
 			
 			// If rs.next() = true -> user entered info matches database
 			if (rs.next()) {
-				out.print("Welcome Back!!!");
+				out.println("<a href='homepage.jsp'>Welcome Back!!!</a>");
 			}
 			else {
 				out.println("Sorry, we can't find your account information.");
 				out.println("Please check the information you entered");
+				
 			}
             
 		} catch (ClassNotFoundException e) {
