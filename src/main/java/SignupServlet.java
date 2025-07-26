@@ -37,7 +37,7 @@ public class SignupServlet extends HttpServlet {
 		
 		String db = "RecipeProject";
 		String user = "root";
-		String dbpassword = "Hjq2004121";
+		String dbpassword = "root";
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -54,7 +54,7 @@ public class SignupServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			
 			// Check if user entered info match database
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM User WHERE username=?");
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username=?");
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery(); // return some result
 			
@@ -63,7 +63,7 @@ public class SignupServlet extends HttpServlet {
 				out.print("Sorry, the username was taken. Please try again.");
 			}
 			else {
-				String inserSQL = "Insert INTO User(username, password, email) Values(?,?,?)";
+				String inserSQL = "Insert INTO users(username, password, email) Values(?,?,?)";
 				PreparedStatement insert = con.prepareStatement(inserSQL, Statement.RETURN_GENERATED_KEYS);
 				insert.setString(1, username);
 				insert.setString(2, password);
