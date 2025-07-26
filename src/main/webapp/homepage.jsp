@@ -105,12 +105,14 @@
 <main>
     <h2>Please select a feature to get started.</h2>
     <div class="button-container">
-        <!-- Left: User Login Section -->
+    	
+        <!--  
         <div class="button-column">
             <div class="column-title">User Login</div>
             <button class="feature-button" onclick="location.href='createUser.jsp'">New User</button>
             <button class="feature-button" onclick="location.href='userLogin.jsp'">Existing User</button>
         </div>
+        -->
 
         <!-- Right: Recipe Features Section -->
         <div class="button-column">
