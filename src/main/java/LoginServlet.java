@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String db = "RecipeProject";
 		String user = "root";
-		String dbpassword = "Hjq2004121";
+		String dbpassword = "root";
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 			String password = request.getParameter("pwd");
 			
 			// Check if user entered info match database
-			PreparedStatement ps = con.prepareStatement("SELECT userID FROM User WHERE username=? AND password=?");
+			PreparedStatement ps = con.prepareStatement("SELECT user_id FROM users WHERE username=? AND password=?");
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery(); // return some result
