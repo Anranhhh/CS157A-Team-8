@@ -18,10 +18,11 @@
         out.println("<p>Error: You must be logged in to submit a recipe.</p>");
         return;
     }
+    */
 
     Connection conn = null;
     PreparedStatement ps = null;
-    */
+    
     int userId = 1; // temp set userId to 1 until session memory is implemented.
 
     try {
