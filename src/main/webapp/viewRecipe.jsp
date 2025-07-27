@@ -3,7 +3,7 @@
 
 <%
     // String recipeIdStr = request.getParameter("recipeId");
-	String recipeIdStr = "1"; // temp forcing recipeId until browse recipe is implemented.
+	String recipeIdStr = request.getParameter("recipeId"); // temp forcing recipeId until browse recipe is implemented.
     int recipeId = 0;
 	// make sure that there is a recipe_id being returned from previous page
     if (recipeIdStr != null) {
