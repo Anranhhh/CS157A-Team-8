@@ -17,15 +17,15 @@
         // if not logged in, go to login page
         response.sendRedirect("createUser.jsp");
     }
-
     Connection conn = null;
     PreparedStatement ps = null;
-    
-    int userId = 1; // temp set userId to 1 until session memory is implemented.
-
+	
+    String db = "Dishbase";
+    String dbUser = "root";
+    String dbPassword = "CS157A_SJSU";
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dishbase", "root", "CS157A_SJSU");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
 
         // Insert into recipes table
         String insertRecipeSQL = "INSERT INTO recipes (title, cooking_time) VALUES (?, ?)";
@@ -166,8 +166,12 @@
             }
         }
 
-        out.println("<p>Recipe added successfully!</p>");
-        out.println("<a href='homepage.jsp'>Back to homepage</a>");
+        out.println("<div style='text-align:center; margin-top:100px;'>");
+        out.println("<h1 style='color:green;'>Recipe added successfully!</h1>");
+        out.println("<form action='homepage.jsp' style='margin-top:30px;'>");
+        out.println("  <button type='submit' style='padding:10px 20px; font-size:16px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;'>Go to Homepage</button>");
+        out.println("</form>");
+        out.println("</div>");
 
     } catch (Exception e) {
         e.printStackTrace();
