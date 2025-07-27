@@ -12,13 +12,11 @@
     String[] selectedTags = request.getParameterValues("tag[]");
 
     // gets the session userID. user needs to be logged in for submit recipe to work.
-    /*
     Integer userId = (Integer) session.getAttribute("userId");
     if (userId == null) {
-        out.println("<p>Error: You must be logged in to submit a recipe.</p>");
-        return;
+        // if not logged in, go to login page
+        response.sendRedirect("createUser.jsp");
     }
-    */
 
     Connection conn = null;
     PreparedStatement ps = null;
