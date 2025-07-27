@@ -32,7 +32,7 @@ public class ReviewServlet extends HttpServlet {
         //Obtain the user's review and rating
         String reviewText = req.getParameter("review_text");
         String ratingData = req.getParameter("rating");
-        int rating = Integer.parseInt(ratingData);  //Using for input validation
+        int rating; //Using for input validation
 
         //Allows for optional comments but converting to null
         if (reviewText != null) {
@@ -52,6 +52,7 @@ public class ReviewServlet extends HttpServlet {
 
         //Confirm the user inputted a valid rating
         try {
+            rating = Integer.parseInt(ratingData);
             if (rating < 1 || rating > 10) {
                 throw new NumberFormatException();
             }
