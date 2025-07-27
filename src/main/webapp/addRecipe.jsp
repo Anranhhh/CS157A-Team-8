@@ -112,7 +112,20 @@
     </script>
 </head>
 <body>
-    <h1 style="text-align:center;">Add a New Recipe</h1>
+	<%
+	    // check if there is a user logged in
+	    Integer userId = (Integer) session.getAttribute("userId");
+	    String username = (String) session.getAttribute("username");
+	
+	    if (userId == null || username == null) {
+	%>
+	    <p style="color:red; text-align:center;">You must be logged in to add a recipe. <a href="userLogin.jsp">Login here</a>.</p>
+	<%
+	        return;
+	    }
+	%>
+	<h1 style="text-align:center;">Welcome, <%= username %>!</h1>
+	<h2 style="text-align:center; margin-top: -10px;">Add a New Recipe</h2>
     <form action="submitRecipe.jsp" method="post">
         <label>Recipe Name:</label>
         <input type="text" name="recipeName" required />
