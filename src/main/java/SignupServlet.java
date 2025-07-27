@@ -76,7 +76,8 @@ public class SignupServlet extends HttpServlet {
                         if (keys.next()) {
                             int newID = keys.getInt(1);
                             out.printf("Welcome, %s! Your userID is %d.<br>", username, newID);
-                            out.println("<a href='homepage.jsp'>Go to home</a>");
+                            out.printf("Now, you can go back log in and enjoy!!!<br>");
+                            out.println("<a href='createUser.jsp'>Click to log in</a>");
                         }
                     }
                 } else {
