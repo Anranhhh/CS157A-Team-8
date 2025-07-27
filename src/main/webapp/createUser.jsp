@@ -219,7 +219,7 @@
 		
 		
 		<div class="container_form container_signup">
-		<form action="#" class="form" id="signupForm">
+		<form action="SignupServlet" method="post"class="form" id="signupForm">
 			<h2 class="form_title">Register</h2>
 			<input type="text" placeholder="username" name="username" class="input"><br>
 			<input type="password" placeholder="password" name="pwd" class="input"><br>
