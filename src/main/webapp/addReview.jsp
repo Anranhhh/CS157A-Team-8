@@ -15,6 +15,9 @@
 <body>
     <h1> Add a review</h1>
     <form action="addReview" method="post">
+        <%-- Grab the current recipe_id --%>
+        <input type="hidden" name="recipe_id" value="${param.recipeId}" />
+
         <div style="margin-top:1em;">
             <label for="comment">Your review:</label><br/>
             <textarea
