@@ -1,4 +1,6 @@
+<%@ page import="java.sql.*, java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,7 +138,7 @@
 <main>
 <container>
     <div class="main-input">
-    	<form action="recipeBrowseServlet" method="post" class="form" id="browse">
+    	<form action="searching.jsp" method="post" class="form" id="browse">
     		<span class="icon"></span>
     		<input type="text" id="searchInput" class="input" placeholder="Enter any recipe name, ingredient, or diet to start browsing"/>
     		<button type="submit" value="search" class="button">Search</button>
@@ -149,6 +151,12 @@
 </container>
 </main>
 
+<div style="text-align: center; padding: 2rem;">
+    <form action="homepage.jsp" method="get">
+        <button type="submit" class="button">Return to Homepage</button>
+    </form>
+</div>
+
 <script>
 document.getElementById('browse').addEventListener('submit', async e => {
     e.preventDefault();
@@ -160,11 +168,11 @@ document.getElementById('browse').addEventListener('submit', async e => {
     box.innerHTML = '<div class="empty-msg">Searching…</div>';
 
     try {
-        const resp = await fetch('testservlet?kw=' + encodeURIComponent(kw));
+        const resp = await fetch('searching.jsp?kw=' + encodeURIComponent(kw));
         if (!resp.ok) throw new Error();
 
-        const html = await resp.text();   // <- NOT json()
-        box.innerHTML = html;             // inject lines as-is
+        const html = await resp.text(); 
+        box.innerHTML = html;        
 
     } catch (err) {
         console.error(err);
@@ -173,6 +181,7 @@ document.getElementById('browse').addEventListener('submit', async e => {
     }
 });
 </script>
+
 
 </body>
 </html>
