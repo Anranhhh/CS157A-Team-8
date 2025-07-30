@@ -115,6 +115,29 @@
             font-family: 'Poppins', sans-serif;
             background-color: #cfdee8;
         }
+
+        /* Home button in top‑right */
+        .home-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #a8d5e2, #8bbecf);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
         .review-card {
             display: flex;
             flex-direction: column;
@@ -151,6 +174,11 @@
     </style>
 </head>
 <body>
+<!-- Home Button -->
+<button class="home-btn" onclick="location.href='homepage.jsp'">
+    Home
+</button>
+
 <div class="review-card">
     <h1>Add a review</h1>
 

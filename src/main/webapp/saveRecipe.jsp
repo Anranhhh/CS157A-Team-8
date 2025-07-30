@@ -7,7 +7,7 @@
     Integer userId = (Integer) session.getAttribute("userId");
 	
     // if user is not logged in, directs them to login page
-    if (userId == null || username == null) {
+    if (userId == null) {
         out.println("<div style='text-align:center; margin-top:100px;'>");
         out.println("<h1 style='color:red;'>You must be logged in to save a recipe.</h1>");
         out.println("<form action='userLogin.jsp' style='margin-top:30px;'>");
