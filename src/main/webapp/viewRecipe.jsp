@@ -245,7 +245,7 @@
     <div class="button-group">
         <button class="back-btn" onclick="history.back()">Back</button>
         <button class="review-btn" onclick="location.href='addReview.jsp?recipe_id=<%= recipeId %>'">Add Review</button>
-        <button class="view-btn" onclick="location.href='<%=request.getContextPath()%>/viewReviews?recipe_id=<%=recipeId%>'">View Reviews</button>
+        <button class="view-btn" onclick="location.href='<%=request.getContextPath()%>/viewReviews.jsp?recipe_id=<%=recipeId%>'">View Reviews</button>
         <button class="save-btn" onclick="location.href='saveRecipe.jsp?recipe_id=<%= recipeId %>'">Save Recipe</button>
     </div>
 </div>

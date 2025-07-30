@@ -155,7 +155,7 @@
 </head>
 <body>
 <div class="reviews-card">
-    <h1>cookies– Reviews</h1>
+    <h1> <%= recipeName %> – Reviews</h1>
 
     <%
 
