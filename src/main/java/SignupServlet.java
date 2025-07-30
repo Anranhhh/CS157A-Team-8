@@ -35,9 +35,9 @@ public class SignupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String db = "RecipeProject";
+		String db = "Dishbase";
 		String user = "root";
-		String dbpassword = "root";
+		String dbpassword = "CS157A_SJSU";
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -46,7 +46,7 @@ public class SignupServlet extends HttpServlet {
         	// Connect to MySql database
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con;
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RecipeProject?autoReconnect=true&useSSL=false",user, dbpassword);
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dishbase?autoReconnect=true&useSSL=false",user, dbpassword);
             
 			// Get user entered info
 			String username = request.getParameter("username");

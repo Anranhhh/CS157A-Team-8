@@ -6,9 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.*;
-import jakarta.json.Json;
-import jakarta.json.JsonArrayBuilder;
-import jakarta.json.JsonObjectBuilder;
 
 
 
@@ -35,12 +32,12 @@ public class recipeBrowseServlet extends HttpServlet {
 		//response.setContentType("application/json;charset=utf-8");
 		response.setContentType("text/html");
 		
-		String db = "RecipeProject";
+		String db = "Dishbase";
 		String user = "root";
-		String dbpassword = "Hjq2004121";
+		String dbpassword = "CS157A_SJSU";
 		PrintWriter out = response.getWriter();
 		
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RecipeProject?autoReconnect=true&useSSL=false",user, dbpassword);
+		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dishbase?autoReconnect=true&useSSL=false",user, dbpassword);
 				PreparedStatement ps = con.prepareStatement(
 						"SELECT r.recipe_id, r.title, r.cooking_time " +
 					             "FROM   recipes r " +

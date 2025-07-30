@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.sql.*;
 
 /**
@@ -36,9 +38,9 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		String db = "RecipeProject";
+		String db = "Dishbase";
 		String user = "root";
-		String dbpassword = "root";
+		String dbpassword = "CS157A_SJSU";
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -47,8 +49,10 @@ public class LoginServlet extends HttpServlet {
         	// Connect to MySql database
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con;
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RecipeProject?autoReconnect=true&useSSL=false",user, dbpassword);
-            
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dishbase?autoReconnect=true&useSSL=false",user, dbpassword);
+			//Setting up a session
+			HttpSession session;
+
 			// Get user entered info
 			String username = request.getParameter("username");
 			String password = request.getParameter("pwd");
@@ -61,6 +65,11 @@ public class LoginServlet extends HttpServlet {
 			
 			// If rs.next() = true -> user entered info matches database
 			if (rs.next()) {
+				//Create a session
+				session = request.getSession(true);
+				session.setAttribute("username", username);
+				session.setAttribute("password", password);
+				session.setAttribute("userId", rs.getInt("user_id"));
 				out.println("<a href='homepage.jsp'>Welcome Back!!!</a>");
 			}
 			else {

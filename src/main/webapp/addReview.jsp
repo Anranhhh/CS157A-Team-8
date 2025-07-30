@@ -16,7 +16,7 @@
     <h1> Add a review</h1>
     <form action="addReview" method="post">
         <%-- Grab the current recipe_id --%>
-        <input type="hidden" name="recipe_id" value="${param.recipeId}" />
+        <input type="hidden" name="recipe_id" value="${param.recipe_id}" />
 
         <div style="margin-top:1em;">
             <label for="comment">Your review:</label><br/>
@@ -41,7 +41,7 @@
 
             <%-- Submit--%>
 
-            <button type="submit">Submit</button>
+            <button type="submit" class="save-btn">Submit</button>
         </div>
     </form>
 </body>
