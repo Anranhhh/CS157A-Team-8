@@ -189,41 +189,27 @@
     	width: 70%;
     }
     
-    /*@keyframes show{
-    	0%,
-    	49.99%{
-    		opacity: 0;
-    		z-index: 1;
-    	}
-    	
-    	50%,
-    	100%{
-    		opacity: 1;
-    		z-index: 5;
-    	}
-    }*/
-    
     </style>
 </head>
 
 <body>
 	<div class="container right-panel-active">
 		<div class="container_form container_login">
-		<form action="LoginServlet" method="post" class="form" id="loginForm">
+		<form action="userLogin.jsp" method="post" class="form" id="loginForm">
 			<h2 class="form_title">Log In</h2>
-			<input type="text" placeholder="username" name="username" class="input"><br>
-			<input type="password" placeholder="password" name="pwd" class="input"><br>
+			<input type="text" placeholder="username" name="username" class="input" required><br>
+			<input type="password" placeholder="password" name="pwd" class="input" required><br>
 			<button type="submit" class="button">Log In Now</button>
 		</form>
 		</div>
 		
 		
 		<div class="container_form container_signup">
-		<form action="SignupServlet" method="post"class="form" id="signupForm">
+		<form action="userSignup.jsp" method="post"class="form" id="signupForm">
 			<h2 class="form_title">Register</h2>
-			<input type="text" placeholder="username" name="username" class="input"><br>
-			<input type="password" placeholder="password" name="pwd" class="input"><br>
-			<input type="text" placeholder="email" name="email" class="input"><br>
+			<input type="text" placeholder="username" name="username" class="input" required><br>
+			<input type="password" placeholder="password" name="pwd" class="input" required><br>
+			<input type="text" placeholder="email" name="email" class="input" required><br>
 			<button type="submit" value="Login" class="button">Sign Up Now</button>
 		</form>
 		</div>
@@ -243,7 +229,6 @@
 	</div>
 	
 	<script>
-	
 	const loginBtn = document.getElementById("login");
 	const signupBtn = document.getElementById("signup");
 	const loginform = document.getElementById("loginForm");
@@ -252,14 +237,12 @@
 	
 	loginBtn.addEventListener("click", ()=>{
 		container.classList.remove("right-panel-active")
-	})
+		})
 	
 	signupBtn.addEventListener("click", ()=>{
 		container.classList.add("right-panel-active")
-	})
-	
+		})
 	</script>
 	
-
 </body>
 </html>
