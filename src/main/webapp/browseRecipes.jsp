@@ -151,6 +151,12 @@
 </container>
 </main>
 
+<div style="text-align: center; padding: 2rem;">
+    <form action="homepage.jsp" method="get">
+        <button type="submit" class="button">Return to Homepage</button>
+    </form>
+</div>
+
 <script>
 document.getElementById('browse').addEventListener('submit', async e => {
     e.preventDefault();
@@ -175,7 +181,6 @@ document.getElementById('browse').addEventListener('submit', async e => {
     }
 });
 </script>
-
 
 
 </body>
