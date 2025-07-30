@@ -6,9 +6,9 @@ String kw = request.getParameter("kw");
 StringBuilder searchResults = new StringBuilder();
 
 if (kw != null && !kw.trim().isEmpty()) {
-    String db = "RecipeProject";
+    String db = "Dishbase";
     String user = "root";
-    String pw   = "Hjq2004121";
+    String pw   = "CS157A_SJSU";
 
     try (Connection con = DriverManager.getConnection(
              "jdbc:mysql://localhost:3306/" + db + "?useSSL=false", user, pw);
