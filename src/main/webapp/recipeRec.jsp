@@ -68,27 +68,69 @@
             padding-top: 2rem;
             background-color: #d3e2ec;
         }
+
+        .recc-card {
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(173,216,230,0.6);
+            padding: 2rem;
+            width: 90%;
+            max-width: 1000px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        /* Home button in top right */
+        .home-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #a8d5e2, #8bbecf);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
-<h1>Recommended Recipes</h1>
+
+<!-- Home Button -->
+<button class="home-btn" onclick="location.href='homepage.jsp'">
+    Home
+</button>
 <%
     if (recipes.isEmpty()) {
 %>
 <p>No matches—try selecting more ingredients.</p>
 <%
 } else {
+%>
+
+<div class="recc-card">
+    <h1>Recommended Recipes</h1>
+    <%
     for (Map<String,Object> rec : recipes) {
 %>
-<div>
     <a href="viewRecipe.jsp?recipeId=<%=rec.get("id")%>">
         <%= rec.get("title") %>
     </a>
-    &nbsp;(<%= rec.get("match") %> of <%= userCount %>)
-</div>
+    &nbsp;(<%= rec.get("match") %> of <%= userCount %>) <br>
 <%
         }
     }
 %>
+</div>
 </body>
 </html>

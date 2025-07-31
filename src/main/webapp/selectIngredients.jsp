@@ -86,6 +86,17 @@
         font-size: 2rem;
         text-align: center;
       }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #a8d5e2 0%, #8bbecf 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
     </style>
     <title>Recipe Recommendations</title>
     <script>
@@ -128,7 +139,7 @@
       <%
         }
       %>
-      <button type="submit">See Recipes</button>
+      <button class="submit-btn" type="submit">See Recipes</button>
     </form>
   </div>
   </body>
