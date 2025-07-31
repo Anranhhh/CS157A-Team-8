@@ -44,9 +44,17 @@
 
         out.println("<div style='text-align:center; margin-top:100px;'>");
         out.println("<h1 style='color:green;'>Recipe added successfully!</h1>");
-        out.println("<form action='homepage.jsp' style='margin-top:30px;'>");
-        out.println("  <button type='submit' style='padding:10px 20px; font-size:16px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;'>Go to Homepage</button>");
+        out.println("<div style='margin-top:30px;'>");
+		
+     	// Back button
+        out.println("<button onclick='history.back()' style='padding:10px 20px; font-size:16px; background-color:#3498db; color:white; border:none; border-radius:5px; cursor:pointer;'>Back</button>");
+     
+        // Homepage button
+        out.println("<form action='homepage.jsp' style='display:inline;'>");
+        out.println("  <button type='submit' style='padding:10px 20px; margin-right:10px; font-size:16px; background-color:#3498db; color:white; border:none; border-radius:5px; cursor:pointer;'>Go to Homepage</button>");
         out.println("</form>");
+
+        out.println("</div>");
         out.println("</div>");
 
     } catch (Exception e) {

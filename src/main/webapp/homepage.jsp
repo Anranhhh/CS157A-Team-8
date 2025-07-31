@@ -96,7 +96,10 @@
     </style>
 </head>
 <body>
-
+	<%
+	    // get username to display
+	    String username = (String) session.getAttribute("username");
+	%>
 <header>
     <h1>Welcome to DishBase</h1>
     <p>Recipes tailored to you.</p>
@@ -105,18 +108,8 @@
 <main>
     <h2>Please select a feature to get started.</h2>
     <div class="button-container">
-    	
-        <!--  
         <div class="button-column">
-            <div class="column-title">User Login</div>
-            <button class="feature-button" onclick="location.href='createUser.jsp'">New User</button>
-            <button class="feature-button" onclick="location.href='userLogin.jsp'">Existing User</button>
-        </div>
-        -->
-
-        <!-- Right: Recipe Features Section -->
-        <div class="button-column">
-            <div class="column-title">Recipe Features</div>
+            <div class="column-title">Currently Logged in as: <%= username %></div>
             <button class="feature-button" onclick="location.href='addRecipe.jsp'">Add a Recipe</button>
             <button class="feature-button" onclick="location.href='browseRecipes.jsp'">Browse Recipes</button>
             <button class="feature-button" onclick="location.href='selectIngredients.jsp'">Recipe Recommendations</button>
