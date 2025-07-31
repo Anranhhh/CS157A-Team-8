@@ -9,7 +9,7 @@ Our project is named “Dishbase”. It is a dynamic, user-centered recipe websi
 - RDBMS:
   - MySQL Community Server 9.3.0
 - Application Languages:
-  - Java, SQL, HTML, JavaScript
+  - Java, SQL, HTML, CSS, JavaScript
 
 ## Progressing
 1. Optimized the `homepage`
