@@ -5,10 +5,14 @@
     <title>Add a Recipe</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            padding: 2rem;
-        }
+	    font-family: Arial, sans-serif;
+	    background-image: url("materials/veggieBackground.jpg");
+	    background-size: cover;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    padding: 2rem;
+	    min-height: 100vh;
+	}
 
         form {
             background: white;
@@ -61,7 +65,7 @@
             margin-top: 0.5rem;
             padding: 0.5rem 1rem;
             font-size: 0.9rem;
-            background-color: #2ecc71;
+            background-color: #3498db;
             color: white;
             border: none;
             border-radius: 4px;
@@ -88,7 +92,7 @@
         }
 
         .back-btn {
-            background-color: #bbb;
+            background-color: #3498db;
             color: white;
         }
     </style>
