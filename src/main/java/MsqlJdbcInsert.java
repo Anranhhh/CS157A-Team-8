@@ -5,16 +5,16 @@ import java.sql.Statement;
 
 public class MsqlJdbcInsert {
 	public static void main(String[] args) throws Exception {
-		// Database information
-		String db = "Hsieh";
-	    String dbUser = "root";
-	    String dbPassword = "CS157A_SJSU";
-		// Connection to MySql
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
-		
-		// insert statement
-		String insertSql = "INSERT INTO tags (name, category) VALUES (?, ?)";
-		Statement statement = connection.createStatement();
+	// Database information
+	String db = "Dishbase";
+    	String dbUser = "root";
+    	String dbPassword = "CS157A_SJSU";
+	// Connection to MySql
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
+	
+	// insert statement
+	String insertSql = "INSERT INTO tags (name, category) VALUES (?, ?)";
+	Statement statement = connection.createStatement();
 
 		// list of cuisine tags
         String[] cuisineTags = {
