@@ -53,6 +53,7 @@
     </script>
   </head>
   <body>
+  <h1>Select your ingredients</h1>
     <form action="recipeRec.jsp" method="get" onsubmit="return validatePantryForm()">
       <!-- Generate checkbox and label for each available ingredient -->
       <%
