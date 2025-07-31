@@ -7,10 +7,12 @@
     boolean submitted = "POST".equalsIgnoreCase(request.getMethod());
 
     if (submitted) {
+        //DATABASE INFORMATION
         String url = "jdbc:mysql://localhost:3306/Dishbase?serverTimezone=UTC";
         String dbUser = "root";
         String dbPass = "CS157A_SJSU";
 
+        //Check if users are logged in
         if (session == null || session.getAttribute("username") == null) {
             errorMessage = "Please <a href='userLogin.jsp'>log in</a> before submitting a review.";
         } else {
@@ -19,12 +21,14 @@
                 throw new ServletException("userId not found");
             }
 
+            //Grab user inputs
             String recipeData = request.getParameter("recipe_id");
             String reviewText = request.getParameter("review_text");
             String ratingData = request.getParameter("rating");
             int rating;
             int recipe = Integer.parseInt(recipeData);
 
+            //Change empty reviews to null for the table
             if (reviewText != null) {
                 reviewText = reviewText.trim();
                 if (reviewText.isEmpty()) {
@@ -32,6 +36,7 @@
                 }
             }
 
+            //Validate rating
             if (ratingData == null || ratingData.isEmpty()) {
                 errorMessage = "Please select a rating (1–10).";
             } else {
@@ -40,29 +45,34 @@
                     if (rating < 1 || rating > 10) {
                         throw new NumberFormatException();
                     }
-
                     Class.forName("com.mysql.cj.jdbc.Driver");
 
+                    //Set up SQL statements
                     String sql = "INSERT INTO reviews (rating, review_text) VALUES (?, ?)";
                     String commentSql = "INSERT INTO commentOn (recipe_id, review_id) VALUES (?, ?)";
                     String writeSql = "INSERT INTO `writes` (user_id, review_id) VALUES (?, ?)";
 
+                    //Open connections to the database
                     try (
                             Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
                             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                             PreparedStatement psComment = conn.prepareStatement(commentSql);
                             PreparedStatement psWrite = conn.prepareStatement(writeSql);
                     ) {
+                        //Store user's rating into reviews table
                         ps.setInt(1, rating);
+                        //Store user's review into reviews table
                         if (reviewText != null) {
                             ps.setString(2, reviewText);
                         } else {
                             ps.setNull(2, java.sql.Types.VARCHAR);
                         }
 
+                        //Execute the update
                         ps.executeUpdate();
 
                         int reviewId;
+                        //Grab the generated reviewId created from inserting the review
                         try (ResultSet keys = ps.getGeneratedKeys()) {
                             if (keys.next()) {
                                 reviewId = keys.getInt(1);
@@ -71,13 +81,17 @@
                             }
                         }
 
+                        //Store recipeId and reviewId into commentsOn table
                         psComment.setInt(1, recipe);
                         psComment.setInt(2, reviewId);
+                        //Insert the values to the table
                         psComment.executeUpdate();
 
                         int userId = (int) userIdObj;
+                        //Store which user wrote which review in the writes table
                         psWrite.setInt(1, userId);
                         psWrite.setInt(2, reviewId);
+                        //Insert the values to the table
                         psWrite.executeUpdate();
 
                         // Redirect after successful insert
