@@ -31,11 +31,24 @@ Our project is named “Dishbase”. It is a dynamic, user-centered recipe websi
 4. Add Recipe Page
 <img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 25 16 PM" src="https://github.com/user-attachments/assets/273af895-4b7c-43d3-be4e-9728e8789261" />
 
-5. Browse Recipes & Filter
+5. Browse Recipes & Filter & View of Recipes
+- Browsing & Filtering
 <img width="1440" height="777" alt="Screenshot 2025-07-31 at 10 02 32 AM" src="https://github.com/user-attachments/assets/c0544c90-ae74-4ea1-b9ac-3ccbeabdd403" />
+- Recipe Results
+<img width="1440" height="775" alt="Screenshot 2025-07-31 at 10 10 34 AM" src="https://github.com/user-attachments/assets/9b203407-996b-4920-b4e8-ad736b240fd2" />
+- View Recipes
+<img width="1440" height="775" alt="Screenshot 2025-07-31 at 10 11 00 AM" src="https://github.com/user-attachments/assets/de0d52dc-687f-43f6-8f97-499a2ce9331a" />
 
-6. Recipe Recommendation (based on ingredients you have)
+6. Reviews
+- Add Review
+<img width="1440" height="775" alt="Screenshot 2025-07-31 at 10 12 28 AM" src="https://github.com/user-attachments/assets/8b663824-7dd2-4184-9764-3fa55ab499b7" />
+
+- View Reviews
+<img width="1440" height="456" alt="Screenshot 2025-07-31 at 10 13 41 AM" src="https://github.com/user-attachments/assets/520af571-3282-427b-8242-527190e63e27" />
+
+7. Recipe Recommendation (based on ingredients you have)
 <img width="1440" height="777" alt="Screenshot 2025-07-31 at 10 05 09 AM" src="https://github.com/user-attachments/assets/70d91ce2-3c48-4931-ada3-c16191185c0a" />
 
-7. Show saved recipes with meal planner
+8. Show saved recipes with meal planner
+- Meal Planner offers you a shopping list of ingredients you need
 <img width="887" height="760" alt="Screenshot 2025-07-31 at 10 06 38 AM" src="https://github.com/user-attachments/assets/35c86061-38c6-4cb9-9452-053cae6dd9fc" />
