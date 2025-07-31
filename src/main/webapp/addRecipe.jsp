@@ -124,8 +124,8 @@
 	        return;
 	    }
 	%>
-	<h1 style="text-align:center;">Welcome, <%= username %>!</h1>
-	<h2 style="text-align:center; margin-top: -10px;">Add a New Recipe</h2>
+	<h1 style="text-align:center;">Add a New Recipe</h1>
+	<h2 style="text-align:center; margin-top: -10px;">Currently logged in as: <%= username %></h2>
     <form action="submitRecipe.jsp" method="post">
         <label>Recipe Name:</label>
         <input type="text" name="recipeName" required />
@@ -188,7 +188,7 @@
 			<input type="checkbox" name="tag[]" value="healthy" /> Healthy<br/>
 			<input type="checkbox" name="tag[]" value="nut-free" /> Nut Free<br/>
 			<input type="checkbox" name="tag[]" value="gluten-free" /> Gluten-Free<br/>
-			<input type="checkbox" name="tag[]" value="peanut-free" /> Vegan<br/>
+			<input type="checkbox" name="tag[]" value="peanut-free" /> Peanut Free<br/>
 			<input type="checkbox" name="tag[]" value="egg-free" /> Egg Free<br/>
 			<input type="checkbox" name="tag[]" value="soy-free" /> Soy Free<br/>
 			<input type="checkbox" name="tag[]" value="low-carb" /> Low Carb<br/>
