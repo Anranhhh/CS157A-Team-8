@@ -54,13 +54,21 @@
             }
         }
     }
-
-
-
 %>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Recipe Recommendations</title>
+    <style>
+        body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding-top: 2rem;
+            background-color: #d3e2ec;
+        }
+    </style>
 </head>
 <body>
 <h1>Recommended Recipes</h1>

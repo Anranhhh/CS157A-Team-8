@@ -45,7 +45,7 @@
 
                     String sql = "INSERT INTO reviews (rating, review_text) VALUES (?, ?)";
                     String commentSql = "INSERT INTO commentOn (recipe_id, review_id) VALUES (?, ?)";
-                    String writeSql = "INSERT INTO `write` (user_id, review_id) VALUES (?, ?)";
+                    String writeSql = "INSERT INTO `writes` (user_id, review_id) VALUES (?, ?)";
 
                     try (
                             Connection conn = DriverManager.getConnection(url, dbUser, dbPass);

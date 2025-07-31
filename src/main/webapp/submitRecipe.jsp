@@ -77,12 +77,11 @@
             rs.close();
             ps.close();
 
-            String containsSQL = "INSERT INTO contains (recipe_id, ingredient_id, quantity, calories) VALUES (?, ?, ?, ?)";
+            String containsSQL = "INSERT INTO contains (recipe_id, ingredient_id, quantity) VALUES (?, ?, ?)";
             ps = conn.prepareStatement(containsSQL);
             ps.setInt(1, recipeId);
             ps.setInt(2, ingredientId);
             ps.setString(3, qty);
-            ps.setInt(4, 50); // temp for calories
             ps.executeUpdate();
             ps.close();
         }

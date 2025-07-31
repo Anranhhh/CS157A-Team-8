@@ -35,7 +35,7 @@
                         "SELECT u.username, r.review_text, r.rating " +
                                 "FROM commentOn c " +
                                 "JOIN reviews r USING (review_id) " +
-                                "JOIN `write` w USING (review_id) " +
+                                "JOIN `writes` w USING (review_id) " +
                                 "JOIN users u USING (user_id) " +
                                 "WHERE c.recipe_id = ? " +
                                 "ORDER BY r.review_id DESC";
