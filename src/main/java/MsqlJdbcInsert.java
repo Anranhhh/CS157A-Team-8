@@ -312,6 +312,55 @@ public class MsqlJdbcInsert {
 		    statement.executeUpdate(insertSaveSQL);
 		}
 
+		// Insert into reviews table: reviews(review_id, rating, review_text)
+		int[] reviews_reviewIds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		int[] reviews_ratings = {7, 9, 8, 4, 8, 1, 1, 1, 10, 1, 1, 1, 9};
+		String[] reviews_reviewTexts = {
+		    "Overall a good recipe, I recommend adding some chicken or whatever protein if you aren't vegetarian.",
+		    "Loved the recipe! I was looking for a katsu recipe that didn't require deep frying and this baked katsu recipe tasted great!",
+		    "Lowkey better than the matcha lattes from cafes and it's a fraction of the price. Would definitely recommend. I also substituted the milk with lactose free milk.",
+		    "I prefer deep frying my katsu, the baked katsu just doesn't hit the same.",
+		    "Great recipe, I replaced some vegetables with ones that are in season and it still tasted great. Also, very healthy.",
+		    "imagine not knowing how to make a grilled cheese sandwich and you're looking up the recipe smh.",
+		    "using a recipe to make a salad is diabolical. just put lettuce and whatever you want and you're done. stop wasting time.",
+		    "overhyped drink. just drink coffee for caffeine smh.",
+		    "best recipe on the website. I definitely didn't upload this recipe.",
+		    "I'd rather just eat shin ramen, easier to make, just need to pour hot water and it tastes better.",
+		    "I'd rather just go down the street to the taco truck and buy tacos for $2.",
+		    "too much work.",
+		    "I loved the recipe! I cooked some rice on the side and it was a great pairing."
+		};
+
+		for (int i = 0; i < reviews_reviewIds.length; i++) {
+		    String insertReviewSQL = "INSERT INTO reviews (review_id, rating, review_text) VALUES ("
+		        + reviews_reviewIds[i] + ", "
+		        + reviews_ratings[i] + ", "
+		        + "'" + reviews_reviewTexts[i].replace("'", "''") + "'" + ")";
+		    statement.executeUpdate(insertReviewSQL);
+		}
+		
+		// Insert into commentOn table: commentOn(recipe_id, review_id)
+		int[] commentOn_recipeIds = {4, 6, 5, 6, 9, 1, 2, 5, 8, 4, 3, 10, 10};
+		int[] commentOn_reviewIds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+		for (int i = 0; i < commentOn_recipeIds.length; i++) {
+		    String insertCommentOnSQL = "INSERT INTO commentOn (recipe_id, review_id) VALUES ("
+		        + commentOn_recipeIds[i] + ", "
+		        + commentOn_reviewIds[i] + ")";
+		    statement.executeUpdate(insertCommentOnSQL);
+		}
+		
+		// Insert into writes table: writes(user_id, review_id)
+		int[] writes_userIds = {1, 1, 3, 4, 4, 7, 7, 7, 7, 7, 7, 7, 8};
+		int[] writes_reviewIds = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+		for (int i = 0; i < writes_userIds.length; i++) {
+		    String insertWritesSQL = "INSERT INTO writes (user_id, review_id) VALUES ("
+		        + writes_userIds[i] + ", "
+		        + writes_reviewIds[i] + ")";
+		    statement.executeUpdate(insertWritesSQL);
+		}
+		
 		// Close connection
 		statement.close();
 		connection.close();
