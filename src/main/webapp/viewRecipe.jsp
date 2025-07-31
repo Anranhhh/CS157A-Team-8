@@ -2,10 +2,9 @@
 <%@ page import="java.sql.*, java.util.*, javax.sql.*" %>
 
 <%
-    // String recipeIdStr = request.getParameter("recipeId");
-	String recipeIdStr = request.getParameter("recipeId"); // temp forcing recipeId until browse recipe is implemented.
+    String recipeIdStr = request.getParameter("recipeId");
     int recipeId = 0;
-	// make sure that there is a recipe_id being returned from previous page
+    // make sure that there is a recipe_id being returned from previous page
     if (recipeIdStr != null) {
         try {
             recipeId = Integer.parseInt(recipeIdStr);
@@ -245,7 +244,7 @@
     <div class="button-group">
         <button class="back-btn" onclick="history.back()">Back</button>
         <button class="review-btn" onclick="location.href='addReview.jsp?recipe_id=<%= recipeId %>'">Add Review</button>
-        <button class="view-btn" onclick="location.href='<%=request.getContextPath()%>/viewReviews.jsp?recipe_id=<%=recipeId%>'">View Reviews</button>
+        <button class="view-btn" onclick="location.href='viewReviews.jsp?recipe_id=<%= recipeId %>'">View Reviews</button>
         <button class="save-btn" onclick="location.href='saveRecipe.jsp?recipe_id=<%= recipeId %>'">Save Recipe</button>
     </div>
 </div>
