@@ -114,7 +114,7 @@
             <button class="feature-button" onclick="location.href='browseRecipes.jsp'">Browse Recipes</button>
 	    <button class="feature-button" onclick="location.href='selectIngredients.jsp'">Recipe Recommendations</button>
             <button class="feature-button" onclick="location.href='mealPlanner.jsp'">Meal Planner</button>
- 	    <button class="feature-button" onclick="location.href='userLogin.jsp'">Login</button>
+ 	    <button class="feature-button" onclick="location.href='userLogin.jsp'">Logout</button>
         </div>
     </div>
 </main>
