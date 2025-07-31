@@ -301,6 +301,17 @@ public class MsqlJdbcInsert {
 		    statement.executeUpdate(insertRecipeStepSQL);
 		}
 
+		// Insert into save table: save(user_id, recipe_id)
+		int[] save_userIds = {1, 4, 3, 4, 5, 2, 2, 1, 1, 2, 5};
+		int[] save_recipeIds = {2, 2, 3, 3, 3, 4, 5, 6, 7, 9, 10};
+		
+		for (int i = 0; i < save_userIds.length; i++) {
+		    String insertSaveSQL = "INSERT INTO save (user_id, recipe_id) VALUES ("
+		        + save_userIds[i] + ", "
+		        + save_recipeIds[i] + ")";
+		    statement.executeUpdate(insertSaveSQL);
+		}
+
 		// Close connection
 		statement.close();
 		connection.close();
