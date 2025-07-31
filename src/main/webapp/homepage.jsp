@@ -112,6 +112,7 @@
             <div class="column-title">Currently Logged in as: <%= username %></div>
             <button class="feature-button" onclick="location.href='addRecipe.jsp'">Add a Recipe</button>
             <button class="feature-button" onclick="location.href='browseRecipes.jsp'">Browse Recipes</button>
+	    <button class="feature-button" onclick="location.href='selectIngredients.jsp'">Recipe Recommendations</button>
             <button class="feature-button" onclick="location.href='mealPlanner.jsp'">Meal Planner</button>
  	    <button class="feature-button" onclick="location.href='userLogin.jsp'">Login</button>
         </div>
