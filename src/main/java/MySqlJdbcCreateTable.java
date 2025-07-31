@@ -105,18 +105,10 @@ public class MySqlJdbcCreateTable {
                 "PRIMARY KEY (user_id, recipe_id), " +
                 "FOREIGN KEY (user_id) REFERENCES users(user_id), " +
                 "FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id))");
-
-        // restrictions relationship
-        statement.execute("CREATE TABLE restrictions (" +
-                "user_id INT NOT NULL, " +
-                "tag_id INT NOT NULL, " +
-                "PRIMARY KEY (user_id, tag_id), " +
-                "FOREIGN KEY (user_id) REFERENCES users(user_id), " +
-                "FOREIGN KEY (tag_id) REFERENCES tags(tag_id))");
 		
-		statement.close();
-		// Close connection
-		connection.close();
+	statement.close();
+	// Close connection
+	connection.close();
 	}
 		
 		
