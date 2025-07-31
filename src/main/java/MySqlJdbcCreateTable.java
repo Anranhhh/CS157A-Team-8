@@ -5,17 +5,21 @@ import java.sql.Statement;
 public class MySqlJdbcCreateTable {
 
 	public static void main(String[] args) throws Exception {
-		// Connection to MySql
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dishbase?serverTimezone=UTC", "root", "CS157A_SJSU");
+	// Database information
+	String db = "Dishbase";
+   	String dbUser = "root";
+    	String dbPassword = "CS157A_SJSU";
+	// Connection to MySql
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
+	
+	Statement statement = connection.createStatement();
 		
-		Statement statement = connection.createStatement();
-		
-		// users table
+	// users table
         statement.execute("CREATE TABLE users (" +
                 "user_id INT NOT NULL AUTO_INCREMENT, " +
                 "username VARCHAR(50) NOT NULL, " +
                 "password VARCHAR(100) NOT NULL, " +
-		"email VARCHAR(100) NOT NULL, " +
+                "email VARCHAR(100) NOT NULL, " +
                 "PRIMARY KEY (user_id))");
 
         // recipes table
@@ -58,7 +62,6 @@ public class MySqlJdbcCreateTable {
                 "recipe_id INT NOT NULL, " +
                 "ingredient_id INT NOT NULL, " +
                 "quantity VARCHAR(50), " +
-                "calories INT, " +
                 "PRIMARY KEY (recipe_id, ingredient_id), " +
                 "FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id), " +
                 "FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id))");
@@ -118,6 +121,3 @@ public class MySqlJdbcCreateTable {
 		
 		
 	}
-
-
-
