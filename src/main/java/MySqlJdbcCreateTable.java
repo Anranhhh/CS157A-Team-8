@@ -74,8 +74,8 @@ public class MySqlJdbcCreateTable {
                 "FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id), " +
                 "FOREIGN KEY (tag_id) REFERENCES tags(tag_id))");
 
-        // write relationship
-        statement.execute("CREATE TABLE `write` (" +
+        // writes relationship
+        statement.execute("CREATE TABLE writes (" +
                 "user_id INT NOT NULL, " +
                 "review_id INT NOT NULL, " +
                 "PRIMARY KEY (user_id, review_id), " +
