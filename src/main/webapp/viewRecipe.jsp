@@ -4,7 +4,7 @@
 <%
     String recipeIdStr = request.getParameter("recipeId");
     int recipeId = 0;
-    // make sure that there is a recipe_id being returned from previous page
+	// make sure that there is a recipe_id being returned from previous page
     if (recipeIdStr != null) {
         try {
             recipeId = Integer.parseInt(recipeIdStr);
@@ -193,10 +193,11 @@
             transition: background-color 0.2s ease;
         }
 
-        .back-btn { background-color: #888; color: white; }
+        .back-btn { background-color: #3498db; color: white; }
         .review-btn { background-color: #3498db; color: white; }
-        .view-btn { background-color: #2ecc71; color: white; }
-        .save-btn { background-color: #f39c12; color: white; }
+        .view-btn { background-color: #3498db; color: white; }
+        .save-btn { background-color: #3498db; color: white; }
+        .home-btn { background-color: #3498db; color: white; }
 
         .button-group button:hover {
             opacity: 0.9;
@@ -246,6 +247,7 @@
         <button class="review-btn" onclick="location.href='addReview.jsp?recipe_id=<%= recipeId %>'">Add Review</button>
         <button class="view-btn" onclick="location.href='viewReviews.jsp?recipe_id=<%= recipeId %>'">View Reviews</button>
         <button class="save-btn" onclick="location.href='saveRecipe.jsp?recipe_id=<%= recipeId %>'">Save Recipe</button>
+        <button class="home-btn" onclick="location.href='homepage.jsp'">Homepage</button>
     </div>
 </div>
 </body>
