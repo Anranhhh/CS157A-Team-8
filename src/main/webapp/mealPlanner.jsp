@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*, java.util.*" %>
 <%
-	// database information
+    // database information
     String db = "Dishbase";
     String dbUser = "root";
     String dbPassword = "CS157A_SJSU";
