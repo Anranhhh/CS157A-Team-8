@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*, java.util.*" %>
 <%
-    // database information
+	// database information
     String db = "Dishbase";
     String dbUser = "root";
     String dbPassword = "CS157A_SJSU";
@@ -145,10 +145,11 @@
         List<Integer> selectedRecipeIds = new ArrayList<>();
         boolean hasSavedRecipes = false;
 
-        try {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
-
+			
+            // get saved recipes for the logged in user
             ps = con.prepareStatement("SELECT r.recipe_id, r.title FROM save s JOIN recipes r ON s.recipe_id = r.recipe_id WHERE s.user_id = ?");
             ps.setInt(1, userId);
             rs = ps.executeQuery();
@@ -156,36 +157,39 @@
             StringBuilder formBuilder = new StringBuilder();
             formBuilder.append("<form method='post' action='mealPlanner.jsp'>");
             formBuilder.append("<h3>Select Saved Recipes:</h3>");
-
-            while (rs.next()) {
+			
+            // shows saved recipes with check boxes
+            while (rs.next()){
                 hasSavedRecipes = true;
                 int recipeId = rs.getInt("recipe_id");
                 String title = rs.getString("title");
                 formBuilder.append("<input type='checkbox' name='recipeIds' value='" + recipeId + "'> " + title + "<br>");
             }
-
-            if (hasSavedRecipes) {
+			
+            if(hasSavedRecipes){
                 formBuilder.append("<br><input type='submit' value='Generate Shopping List'>");
                 formBuilder.append("</form>");
                 out.println(formBuilder.toString());
-            } else {
+            } 
+            
+            // asks user to browse recipes to save recipes if they don't have any saved recipes.
+            else{
                 out.println("<p>No Saved Recipes. Please use Browse Recipes Feature in Homepage.</p>");
                 out.println("<a href='browseRecipes.jsp' class='button-link'>Browse Recipes</a>");
             }
 
             rs.close();
             ps.close();
-
+			
             String[] selected = request.getParameterValues("recipeIds");
-            if (selected != null) {
-                for (String id : selected) {
-                    try {
-                        selectedRecipeIds.add(Integer.parseInt(id));
-                    } catch (NumberFormatException ignored) {}
+            if(selected != null){
+                for(String id : selected){
+                	selectedRecipeIds.add(Integer.parseInt(id));
                 }
             }
-
-            if (!selectedRecipeIds.isEmpty()) {
+			
+            // gets ingredient list of recipes selected
+            if(!selectedRecipeIds.isEmpty()){
                 String placeholders = String.join(",", Collections.nCopies(selectedRecipeIds.size(), "?"));
                 String query = "SELECT DISTINCT i.name " +
                             "FROM contains c " +
@@ -199,28 +203,31 @@
                 }
 
                 rs = ps.executeQuery();
-
+				
+                // print table of ingredients for the shopping list
                 out.println("<h3>Shopping List</h3>");
                 out.println("<table>");
                 out.println("<tr><th>Ingredient</th></tr>");
-                while (rs.next()) {
+                while(rs.next()){
                     String ingredient = rs.getString("name");
                     out.println("<tr><td>" + ingredient + "</td></tr>");
                 }
                 out.println("</table>");
             }
 
-        } catch (Exception e) {
+        } 
+        catch(Exception e){
             out.println("<p class='error'>Error: " + e.getMessage() + "</p>");
             e.printStackTrace();
-        } finally {
+        } 
+        finally {
             if (rs != null) try { rs.close(); } catch (Exception ignored) {}
             if (ps != null) try { ps.close(); } catch (Exception ignored) {}
             if (con != null) try { con.close(); } catch (Exception ignored) {}
         }
     %>
 
-    <!-- Home Button -->
+    <!-- home button at footer -->
     <div class="footer">
         <form action="homepage.jsp">
             <input type="submit" class="home-button" value="Return to Homepage">
