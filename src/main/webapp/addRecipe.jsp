@@ -96,7 +96,7 @@
             color: white;
         }
     </style>
-    <!-- Functions to add a row for the ingredients and the recipe steps -->
+     <!-- functions for adding extra ingredients and recipe steps rows -->
     <script>
         function addIngredientRow() {
             const table = document.getElementById("ingredientTable");
