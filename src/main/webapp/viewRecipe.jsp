@@ -114,12 +114,16 @@
 <head>
     <title><%= recipeName %> - Recipe Information</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            padding: 2rem;
-        }
-
+		body {
+		    font-family: Arial, sans-serif;
+		    background-image: url("materials/icon_background.jpg");
+		    background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    padding: 2rem;
+		    min-height: 100vh;
+		}
         .container {
             background: white;
             padding: 2rem;
