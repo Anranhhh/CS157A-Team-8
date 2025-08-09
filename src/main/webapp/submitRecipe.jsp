@@ -13,21 +13,22 @@
 
     // gets the session userID. user needs to be logged in for submit recipe to work.
     Integer userId = (Integer) session.getAttribute("userId");
-    if (userId == null) {
+    if(userId == null){
         // if not logged in, go to login page
         response.sendRedirect("createUser.jsp");
     }
     Connection conn = null;
     PreparedStatement ps = null;
 	
+    // database login information
     String db = "Dishbase";
     String dbUser = "root";
     String dbPassword = "CS157A_SJSU";
-    try {
+    try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
 
-        // Insert into recipes table
+        // sql for insert into recipes table
         String insertRecipeSQL = "INSERT INTO recipes (title, cooking_time) VALUES (?, ?)";
         ps = conn.prepareStatement(insertRecipeSQL, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, recipeName);
@@ -36,13 +37,13 @@
 
         ResultSet rs = ps.getGeneratedKeys();
         int recipeId = -1;
-        if (rs.next()) {
+        if(rs.next()){
             recipeId = rs.getInt(1);
         }
         rs.close();
         ps.close();
 
-        // Insert into upload table
+        // sql for insert into upload table
         String uploadSQL = "INSERT INTO upload (user_id, recipe_id) VALUES (?, ?)";
         ps = conn.prepareStatement(uploadSQL);
         ps.setInt(1, userId);
@@ -50,19 +51,22 @@
         ps.executeUpdate();
         ps.close();
 
-        // Handle ingredients
-        for (int i = 0; i < ingredientNames.length; i++) {
+        // ingredients
+        for(int i = 0; i < ingredientNames.length; i++){
             String ingredientName = ingredientNames[i].trim();
             String qty = ingredientQtys[i].trim();
-
+			
+            // check if ingredient is already in table
             int ingredientId = -1;
             String checkIng = "SELECT ingredient_id FROM Ingredients WHERE name = ?";
             ps = conn.prepareStatement(checkIng);
             ps.setString(1, ingredientName);
             rs = ps.executeQuery();
-            if (rs.next()) {
+            if(rs.next()){
                 ingredientId = rs.getInt(1);
-            } else {
+            } 
+            // if not in table, add a new ingredient
+            else{
                 rs.close();
                 ps.close();
                 String insertIng = "INSERT INTO Ingredients (name) VALUES (?)";
@@ -70,13 +74,14 @@
                 ps.setString(1, ingredientName);
                 ps.executeUpdate();
                 rs = ps.getGeneratedKeys();
-                if (rs.next()) {
+                if(rs.next()){
                     ingredientId = rs.getInt(1);
                 }
             }
             rs.close();
             ps.close();
-
+			
+            // sql for insert into contains table
             String containsSQL = "INSERT INTO contains (recipe_id, ingredient_id, quantity) VALUES (?, ?, ?)";
             ps = conn.prepareStatement(containsSQL);
             ps.setInt(1, recipeId);
@@ -86,8 +91,8 @@
             ps.close();
         }
 
-        // Handle recipe steps
-        for (int i = 0; i < steps.length; i++) {
+        // sql for insert into recipeSteps table
+        for(int i = 0; i < steps.length; i++){
             String step = steps[i].trim();
             String stepSQL = "INSERT INTO recipeSteps (recipe_id, step_number, description) VALUES (?, ?, ?)";
             ps = conn.prepareStatement(stepSQL);
@@ -98,14 +103,14 @@
             ps.close();
         }
 
-        // Insert selected cuisines as tags
-        if (selectedCuisines != null) {
-            for (String cuisine : selectedCuisines) {
+        // insert selected cuisines into have table using the tags table
+        if(selectedCuisines != null){
+            for(String cuisine : selectedCuisines){
                 ps = conn.prepareStatement("SELECT tag_id FROM tags WHERE name = ? AND category = ?");
                 ps.setString(1, cuisine);
                 ps.setString(2, "Cuisine");
                 rs = ps.executeQuery();
-                if (rs.next()) {
+                if(rs.next()){
                     int tagId = rs.getInt(1);
                     rs.close();
                     ps.close();
@@ -115,19 +120,20 @@
                     ps.setInt(2, tagId);
                     ps.executeUpdate();
                     ps.close();
-                } else {
+                } 
+                else{
                     rs.close();
                     ps.close();
                 }
             }
         }
 
-        // Insert difficulty as tag
+        // insert difficulty tag into have table from the tags table
         ps = conn.prepareStatement("SELECT tag_id FROM tags WHERE name = ? AND category = ?");
         ps.setString(1, difficulty);
         ps.setString(2, "Difficulty");
         rs = ps.executeQuery();
-        if (rs.next()) {
+        if(rs.next()){
             int tagId = rs.getInt(1);
             rs.close();
             ps.close();
@@ -137,18 +143,19 @@
             ps.setInt(2, tagId);
             ps.executeUpdate();
             ps.close();
-        } else {
+        } 
+        else{
             rs.close();
             ps.close();
         }
 
-        // Insert optional tags
-        if (selectedTags != null) {
-            for (String tag : selectedTags) {
+        // insert restriction tags from tags table into have table
+        if(selectedTags != null){
+            for(String tag : selectedTags){
                 ps = conn.prepareStatement("SELECT tag_id FROM tags WHERE name = ?");
                 ps.setString(1, tag);
                 rs = ps.executeQuery();
-                if (rs.next()) {
+                if(rs.next()){
                     int tagId = rs.getInt(1);
                     rs.close();
                     ps.close();
@@ -158,13 +165,15 @@
                     ps.setInt(2, tagId);
                     ps.executeUpdate();
                     ps.close();
-                } else {
+                } 
+                else{
                     rs.close();
                     ps.close();
                 }
             }
         }
-
+		
+        // let user know if the recipe information was inputted into database successfully
         out.println("<div style='text-align:center; margin-top:100px;'>");
         out.println("<h1 style='color:green;'>Recipe added successfully!</h1>");
         out.println("<form action='homepage.jsp' style='margin-top:30px;'>");
@@ -172,10 +181,12 @@
         out.println("</form>");
         out.println("</div>");
 
-    } catch (Exception e) {
+    } 
+    catch(Exception e){
         e.printStackTrace();
         out.println("<p>Error: " + e.getMessage() + "</p>");
-    } finally {
+    } 
+    finally{
         if (ps != null) ps.close();
         if (conn != null) conn.close();
     }
