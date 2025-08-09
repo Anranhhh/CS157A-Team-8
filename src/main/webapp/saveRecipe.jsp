@@ -7,7 +7,7 @@
     Integer userId = (Integer) session.getAttribute("userId");
 	
     // if user is not logged in, directs them to login page
-    if (userId == null) {
+    if(userId == null){
         out.println("<div style='text-align:center; margin-top:100px;'>");
         out.println("<h1 style='color:red;'>You must be logged in to save a recipe.</h1>");
         out.println("<form action='userLogin.jsp' style='margin-top:30px;'>");
@@ -19,7 +19,7 @@
 	
     // check for recipe_id from previous page
     String recipeIdStr = request.getParameter("recipe_id");
-    if (recipeIdStr == null || recipeIdStr.isEmpty()) {
+    if(recipeIdStr == null || recipeIdStr.isEmpty()){
         out.println("<h2 style='color:red; text-align:center;'>Missing recipe ID.</h2>");
         return;
     }
@@ -46,10 +46,10 @@
         out.println("<h1 style='color:green;'>Recipe added successfully!</h1>");
         out.println("<div style='margin-top:30px;'>");
 		
-     	// Back button
+     	// back button
         out.println("<button onclick='history.back()' style='padding:10px 20px; font-size:16px; background-color:#3498db; color:white; border:none; border-radius:5px; cursor:pointer;'>Back</button>");
      
-        // Homepage button
+        // homepage button
         out.println("<form action='homepage.jsp' style='display:inline;'>");
         out.println("  <button type='submit' style='padding:10px 20px; margin-right:10px; font-size:16px; background-color:#3498db; color:white; border:none; border-radius:5px; cursor:pointer;'>Go to Homepage</button>");
         out.println("</form>");
@@ -57,12 +57,14 @@
         out.println("</div>");
         out.println("</div>");
 
-    } catch (Exception e) {
+    } 
+    catch(Exception e){
         out.println("<div style='text-align:center; margin-top:100px;'>");
         out.println("<h1 style='color:red;'>Error saving recipe.</h1>");
         out.println("<p>" + e.getMessage() + "</p>");
         out.println("</div>");
-    } finally {
+    } 
+    finally{
         if (ps != null) try { ps.close(); } catch (Exception ignored) {}
         if (con != null) try { con.close(); } catch (Exception ignored) {}
     }
