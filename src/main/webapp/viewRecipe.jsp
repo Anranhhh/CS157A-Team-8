@@ -5,14 +5,16 @@
     String recipeIdStr = request.getParameter("recipeId");
     int recipeId = 0;
 	// make sure that there is a recipe_id being returned from previous page
-    if (recipeIdStr != null) {
-        try {
+    if(recipeIdStr != null){
+        try{
             recipeId = Integer.parseInt(recipeIdStr);
-        } catch (NumberFormatException e) {
+        } 
+        catch(NumberFormatException e){
             out.println("<h2>Invalid recipe ID</h2>");
             return;
         }
-    } else {
+    } 
+    else{
         out.println("<h2>No recipe ID provided</h2>");
         return;
     }
@@ -34,7 +36,7 @@
     String dbUser = "root";
     String dbPassword = "CS157A_SJSU";
 
-    try {
+    try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, dbUser, dbPassword);
 
@@ -100,11 +102,13 @@
         rs.close();
         ps.close();
 
-    } catch (Exception e) {
+    } 
+    catch(Exception e){
         e.printStackTrace();
         out.println("<h3>Error loading recipe data</h3>");
         return;
-    } finally {
+    } 
+    finally{
         if (con != null) try { con.close(); } catch (Exception ignored) {}
     }
 %>
