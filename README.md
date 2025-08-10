@@ -11,7 +11,7 @@ Our project is named “Dishbase”. It is a dynamic, user-centered recipe websi
 - Application Languages:
   - Java, SQL, HTML, CSS, JavaScript
 
-## Functionalities & Features
+## Functionalities & Features Demo
 1. Starting with the greeting page:
 
 <img width="1440" height="777" alt="Screenshot 2025-07-31 at 10 00 12 AM" src="https://github.com/user-attachments/assets/5bac2494-ff7a-45d2-b4c6-ad447cac7d1b" />
