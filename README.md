@@ -11,16 +11,16 @@ Our project is named “Dishbase”. It is a dynamic, user-centered recipe websi
 - Application Languages:
   - Java, SQL, HTML, CSS, JavaScript
 
-## Progressing
-1. Optimized the `homepage`
+## Functionalities & Features
+1. Starting with the greeting page:
 
 <img width="1440" height="777" alt="Screenshot 2025-07-31 at 10 00 12 AM" src="https://github.com/user-attachments/assets/5bac2494-ff7a-45d2-b4c6-ad447cac7d1b" />
 
-2. Completed the basic layout and design of the user sign-up and log-in page
-- Sign-up/Register Page
+2. User register and login page
+- Register Page
 <img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 23 30 PM" src="https://github.com/user-attachments/assets/4fcd8350-e713-4033-8672-34f70f85a42a" />
 
-- Log-in Page
+- Login Page
 <img width="1440" height="778" alt="Screenshot 2025-07-22 at 4 24 07 PM" src="https://github.com/user-attachments/assets/8747b66b-4e98-4ea1-a6e8-f87ad1def9e0" />
 
 3. Homepage
